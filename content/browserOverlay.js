@@ -46,16 +46,14 @@ AnonifyChrome.BrowserOverlay = {
 			let currentUA = "Default";
 		}
 
-		let OSList = document.getElementById("anonifybrowser-toolbarbutton-os-menulist").firstChild;
+		let OSList = document.getElementById("anonifybrowser-toolbarbutton-os-menulist");
 		
 		let OSString = userPrefs.getCharPref("osstring").split(";,;");
 		for(let i=0; i < OSString.length; i++){
 			OSString[i] = OSString[i].split("=-=-=");
 			
 			let menuitem = document.createElement("menuitem");
-			menuitem = OSList.appendChild(menuitem,OSList.firstChild);
-			menuitem.setAttribute("label", OSString[i][1]);
-			menuitem.setAttribute("value", OSString[i][0]);
+			menuitem = OSList.appendItem(OSString[i][1], OSString[i][0]);
 			if(OSString[i][0] == currentOS){
 				document.getElementById("anonifybrowser-toolbarbutton-os-menulist").selectedIndex = i;
 			}
