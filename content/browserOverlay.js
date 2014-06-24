@@ -67,7 +67,10 @@ AnonifyChrome.BrowserOverlay = {
 	},
 
 	onOSSelect : function(value, selected, toggled){
-		let OSVerList = document.getElementById("anonifybrowser-toolbarbutton-osver-menulist").firstChild;
+		var panel = document.getElementById("anonifybrowser-panel");
+		let pos = panel.position;
+		panel.hidePopup();
+		let OSVerList = document.getElementById("anonifybrowser-toolbarbutton-osver-menulist");
 		OSVerList.innerHTML="";
 		let OSVerString = userPrefs.getCharPref("uastring").split(";,;");
 		let start = false;
@@ -77,10 +80,7 @@ AnonifyChrome.BrowserOverlay = {
 					break;
 				
 				OSVerString[i] = OSVerString[i].split("=-=-=");
-				let menuitem = document.createElement("menuitem");
-				menuitem = OSVerList.appendChild(menuitem);
-				menuitem.setAttribute("label", OSVerString[i][0]);
-				menuitem.setAttribute("value", OSVerString[i][0]+"=-=-="+OSVerString[i][1]);
+				menuitem = OSVerList.appendItem(OSVerString[i][0], OSVerString[i][0]+"=-=-="+OSVerString[i][1]);
 
 				if((selected && OSVerString[i][0] == selected) || (!selected && !j)){
 					document.getElementById("anonifybrowser-toolbarbutton-osver-menulist").selectedIndex = j;
@@ -90,7 +90,8 @@ AnonifyChrome.BrowserOverlay = {
 			if(OSVerString[i] == value)
 				start = true;
 		}
-		OSVerList.moveTo(-1, -1);
+		let anchor = document.getElementById("anonifybrowser-toolbarbutton");
+		panel.openPopup(anchor);
 		userPrefs.setBoolPref("toggled", toggled?toggled:false);
 	},
 
