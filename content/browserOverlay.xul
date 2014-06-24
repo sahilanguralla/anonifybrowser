@@ -22,7 +22,7 @@
     <toolbarbutton class="toolbarbutton-1 chromeclass-toolbar-additional" type="menu-button" id="anonifybrowser-toolbarbutton" label="&anonifybrowser.toolbarbutton.label;"
     accesskey="&anonifybrowser.toolbarbutton.accesskey;"
     insertbefore="devToolsEndSeparator" tooltip="&anonifybrowser.toolbarbutton.tooltip;">
-      <panel id="anonifybrowser-panel" label="&anonifybrowser.panel.label;" type="arrow">
+      <panel id="anonifybrowser-panel" label="&anonifybrowser.panel.label;" type="arrow" flip="slide">
         <label id="anonifybrowser-toolbarbutton-os-menulist-label" control="anonifybrowser-toolbarbutton-os-menulist" value="&anonifybrowser.toolbarbutton.os.menulist.label;"/>
         <menulist id="anonifybrowser-toolbarbutton-os-menulist">
           <menupopup>

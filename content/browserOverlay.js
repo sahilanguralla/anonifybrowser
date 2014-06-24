@@ -90,6 +90,7 @@ AnonifyChrome.BrowserOverlay = {
 			if(OSVerString[i] == value)
 				start = true;
 		}
+		OSVerList.moveTo(-1, -1);
 		userPrefs.setBoolPref("toggled", toggled?toggled:false);
 	},
 
