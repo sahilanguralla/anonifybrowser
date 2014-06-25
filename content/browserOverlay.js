@@ -150,7 +150,9 @@ AnonifyChrome.BrowserOverlay = {
 	 */
 	updateStatus : function(){
 		let enabled = userPrefs.getBoolPref("enabled");
-      	document.getElementById("anonifybrowser-toolbarbutton").setAttribute("enabled",enabled?"true":"false");
+		let anonifybutton = document.getElementById("anonifybrowser-toolbarbutton");
+      	anonifybutton.setAttribute("enabled",enabled?"true":"false");
+      	anonifybutton.setAttribute("tooltiptext", enabled?"Your browser is anonymous!":"Your browser is exposed!");
       	let osVer = document.getElementById("anonifybrowser-toolbarbutton-osver-menulist").value.split("=-=-=");
       	AnonifyChrome.BrowserOverlay.applyUA(enabled?osVer[1]:"default");
 	}
