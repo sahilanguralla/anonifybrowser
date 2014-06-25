@@ -13,9 +13,12 @@ if ("undefined" == typeof(AnonifyChrome)) {
 };
 
 /**
- * Controls the browser overlay for the Hello World extension.
+ * Controls the browser overlay for the extension.
  */
 AnonifyChrome.BrowserOverlay = {
+	/*
+	 * places the icon at specified location
+	 */
 	placeIcon : function(id, container){
 		container = document.getElementById(container);
 		let nextNode = null;
@@ -34,6 +37,10 @@ AnonifyChrome.BrowserOverlay = {
         // Finally insert our widget in the right toolbar and in the right position
         container.insertItem(id, nextNode, null, false);
 	},
+
+	/*
+	 * Initializes the addon on every start
+	 */
 	init : function(){
 		try{
 			let currentOSUA = userPrefs.getCharPref("currentUA");
@@ -64,9 +71,13 @@ AnonifyChrome.BrowserOverlay = {
 		AnonifyChrome.BrowserOverlay.updateStatus();
 	},
 
+	/*
+	 * this function executes on selection of OS from dropdown list
+	 * It generates OS Version list for selected OS
+	 */
 	onOSSelect : function(value, selected, toggled){
-		var panel = document.getElementById("anonifybrowser-panel");
-		let pos = panel.position;
+		let panel = document.getElementById("anonifybrowser-panel");
+		let anchor = document.getElementById("anonifybrowser-toolbarbutton");
 		panel.hidePopup();
 		let OSVerList = document.getElementById("anonifybrowser-toolbarbutton-osver-menulist");
 		OSVerList.innerHTML="";
@@ -88,11 +99,14 @@ AnonifyChrome.BrowserOverlay = {
 			if(OSVerString[i] == value)
 				start = true;
 		}
-		let anchor = document.getElementById("anonifybrowser-toolbarbutton");
+
 		panel.openPopup(anchor);
 		userPrefs.setBoolPref("toggled", toggled?toggled:false);
 	},
 
+	/*
+	 * changes the state of the extension
+	 */
 	toggleState : function(){
 		try{
 			let toggled = userPrefs.getBoolPref("toggled");
@@ -108,6 +122,10 @@ AnonifyChrome.BrowserOverlay = {
 			userPrefs.setBoolPref("toggled",true);
 	},
 
+	/*
+	 * function executes on selection of OS Version
+	 * it applies the selcted user agent
+	 */
 	onOSVerSelect : function(value){
 		value = value.split("=-=-=");
 		let os = document.getElementById("anonifybrowser-toolbarbutton-os-menulist").value;
@@ -122,6 +140,9 @@ AnonifyChrome.BrowserOverlay = {
 		userPrefs.setBoolPref("toggled", false);
 	},
 
+	/*
+	 * changes UA String - *root function*
+	 */
 	applyUA : function(value){
 		if(value!="default")
 			generalPrefs.setCharPref("useragent.override", value);
@@ -129,6 +150,9 @@ AnonifyChrome.BrowserOverlay = {
 			generalPrefs.clearUserPref("useragent.override");
 	},
 
+	/*
+	 * updates the status of extension after every toggle
+	 */
 	updateStatus : function(){
 		let enabled = userPrefs.getBoolPref("enabled");
       	document.getElementById("anonifybrowser-toolbarbutton").setAttribute("enabled",enabled?"true":"false");
@@ -176,6 +200,10 @@ try {
 	let firstrun = userPrefs.getBoolPref("firstrun");
 	let installedVersion = userPrefs.getCharPref("installedVersion");
 	let uastring = userPrefs.getCharPref("uastring");
+	let currentUA = userPrefs.getCharPref("currentUA");
+	let enabled = userPrefs.getBoolPref("enabled");
+	let osstring = userPrefs.getCharPref("osstring");
+	let toggled = userPrefs.getBoolPref("toggled");
 } catch(e){
 	const INSTALLED_VERSION = "0.1";
 	const OSString = "default=-=-=Default;,;android=-=-=Android;,;bbos=-=-=Blackberry OS;,;linux=-=-=Linux;,;macos=-=-=Mac OS;,;ios=-=-=iOS;,;win=-=-=Windows;,;winph=-=-=Windows Phone";
@@ -184,6 +212,7 @@ try {
 	userPrefs.setCharPref("currentUA", "default;,;Default");
 	userPrefs.setBoolPref("enabled", false);
 	userPrefs.setCharPref("osstring",OSString);
+	userPrefs.getBoolPref("toggled",true);
 	let UAStringList = [
 		["default"],
 		["Default","default"],
