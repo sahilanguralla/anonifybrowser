@@ -214,7 +214,7 @@ try {
 	userPrefs.setCharPref("currentUA", "default;,;Default");
 	userPrefs.setBoolPref("enabled", false);
 	userPrefs.setCharPref("osstring",OSString);
-	userPrefs.getBoolPref("toggled",true);
+	userPrefs.setBoolPref("toggled",true);
 	let UAStringList = [
 		["default"],
 		["Default","default"],
