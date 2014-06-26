@@ -9,7 +9,7 @@
     <em:description>Hides your firefox from websites
 
 Anonify Browser lets you modify your browsers identity to another browser thereby hidding your browser from websites. This add-on might help you in situations where a website forces you to use a specific browser or operating system. There are about 100 OS versions/browser and about 7 Operating Systems.</em:description>
-    <em:version>0.2</em:version>
+    <em:version>0.2.1</em:version>
     <em:creator>coolboyssahil</em:creator>
     <em:homepageURL>https://coolboyssahil.github.io/anonifybrowser</em:homepageURL>
     <em:iconURL>chrome://anonifybrowser/skin/ico/logo.png</em:iconURL>
