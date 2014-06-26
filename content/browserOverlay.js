@@ -199,6 +199,7 @@ AnonifyChrome.PrefObserver = {
 	 *
 	 */
 try {
+	const VERSION = "0.2";
 	let firstrun = userPrefs.getBoolPref("firstrun");
 	let installedVersion = userPrefs.getCharPref("installedVersion");
 	let uastring = userPrefs.getCharPref("uastring");
@@ -206,8 +207,11 @@ try {
 	let enabled = userPrefs.getBoolPref("enabled");
 	let osstring = userPrefs.getCharPref("osstring");
 	let toggled = userPrefs.getBoolPref("toggled");
+	if(installedVersion < version){
+		userPrefs.setCharPref("installedVersion", VERSION);
+	}
 } catch(e){
-	const INSTALLED_VERSION = "0.1";
+	const INSTALLED_VERSION = "0.2";
 	const OSString = "default=-=-=Default;,;android=-=-=Android;,;bbos=-=-=Blackberry OS;,;linux=-=-=Linux;,;macos=-=-=Mac OS;,;ios=-=-=iOS;,;win=-=-=Windows;,;winph=-=-=Windows Phone";
 	userPrefs.setBoolPref("firstrun", false);
 	userPrefs.setCharPref("installedVersion", INSTALLED_VERSION);
