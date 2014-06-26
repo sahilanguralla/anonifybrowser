@@ -44,7 +44,7 @@ AnonifyChrome.BrowserOverlay = {
 	 */
 	firstRun : function() {
 		try {
-			const VERSION = "0.2";
+			const VERSION = "0.2.1";
 			let firstrun = AnonifyChrome.BrowserOverlay.userPrefs.getBoolPref("firstrun");
 			let installedVersion = AnonifyChrome.BrowserOverlay.userPrefs.getCharPref("installedVersion");
 			let uastring = AnonifyChrome.BrowserOverlay.userPrefs.getCharPref("uastring");
@@ -56,7 +56,7 @@ AnonifyChrome.BrowserOverlay = {
 				AnonifyChrome.BrowserOverlay.userPrefs.setCharPref("installedVersion", VERSION);
 			}
 		} catch(e){
-			const INSTALLED_VERSION = "0.2";
+			const INSTALLED_VERSION = "0.2.1";
 			const OSString = "default=-=-=Default;,;android=-=-=Android;,;bbos=-=-=Blackberry OS;,;linux=-=-=Linux;,;macos=-=-=Mac OS;,;ios=-=-=iOS;,;win=-=-=Windows;,;winph=-=-=Windows Phone";
 			AnonifyChrome.BrowserOverlay.userPrefs.setBoolPref("firstrun", false);
 			AnonifyChrome.BrowserOverlay.userPrefs.setCharPref("installedVersion", INSTALLED_VERSION);
