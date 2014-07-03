@@ -1,4 +1,0 @@
-Testing Results
-----------------
-Firefox 29,28 bugs:
-- Panel shifts to right on selecting OS

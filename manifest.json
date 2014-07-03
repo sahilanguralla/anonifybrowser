@@ -1,0 +1,20 @@
+{
+	"manifest_version": 2,
+
+	"name": "Anonify Browser",
+	"description": "Lets you hide your firefox from websites.",
+	"version": "0.1",
+
+	"browser_action": {
+		"default_icon": "images/logo-32.png",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"<all_urls>"
+	],
+	"background":{
+		"page":"background.html"
+	}
+}
