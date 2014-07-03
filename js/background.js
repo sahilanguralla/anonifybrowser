@@ -2,7 +2,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 	function(details) {
 		var ua = JSON.parse(localStorage["currentUA"]).ua;
 		var enabled = localStorage["enabled"];
-		if(enabled && ua.toLowerCase() != "default" && ua.length != 0 && ua != undefined)
+		if(enabled == "true" && ua.toLowerCase() != "default" && ua.length != 0 && ua != undefined)
 		{
 			for (var i = 0; i < details.requestHeaders.length; ++i) {
 				if (details.requestHeaders[i].name === 'User-Agent') {

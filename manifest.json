@@ -6,10 +6,11 @@
 	"version": "0.1",
 
 	"browser_action": {
-		"default_icon": "images/logo-32.png",
+		"default_icon": "images/logo-128.png",
 		"default_popup": "popup.html"
 	},
 	"permissions": [
+		"tabs",
 		"webRequest",
 		"webRequestBlocking",
 		"<all_urls>"

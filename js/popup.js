@@ -201,14 +201,18 @@ AnonifyBrowser.Interface = {
 		var os = oslist.options[oslist.selectedIndex].text;
 		var osId = oslist.value;
 		var osVer = osverlist.options[osverlist.selectedIndex].text;
-		localStorage["currentUA"] = '{"os" : "' + os + '", "osid" : "' + osId + '", "osver" : "' + osVer + '", "ua" : "' + ua + '"}';
+		if(ua == "default"){
+			document.getElementById(this.TRIGGER_ID).checked = false;
+			this.toggleState(false);
+		}
+		else
+			localStorage["currentUA"] = '{"os" : "' + os + '", "osid" : "' + osId + '", "osver" : "' + osVer + '", "ua" : "' + ua + '"}';
 	},
 
 	toggleState : function(checked){
-		if(typeof checked != "undefined")
-			localStorage["enabled"] = !checked;
-		else
-			localStorage["enabled"] = typeof localStorage["enabled"] != "undefined" ? !localStorage["enabled"] : false;
+		if(typeof checked == "undefined")
+			checked = !(localStorage["enabled"] == "true");
+		localStorage["enabled"] = checked;
 	}
 };
 
@@ -253,17 +257,23 @@ document.addEventListener('DOMContentLoaded', function(){
 		selectedOS = currentUA.osid;
 		selectedOSVer = currentUA.osver;
 	}
+	document.getElementById(AnonifyBrowser.Interface.TRIGGER_ID).checked = (localStorage["enabled"] == "true");
 	AnonifyBrowser.Interface.buildOSList(selectedOS, selectedOSVer);
 	$('.ui.checkbox').checkbox();
 
+	$("#" + AnonifyBrowser.Interface.TRIGGER_ID).checkbox({
+		onChange : function(){
+			var enabled = document.getElementById(AnonifyBrowser.Interface.TRIGGER_ID).checked;
+			AnonifyBrowser.Interface.toggleState(!enabled);
+		}
+	});
 	document.getElementById(AnonifyBrowser.Interface.OS_LIST_ID).addEventListener("change", function(){
 		AnonifyBrowser.Interface.onOSSelect(this.value);
 	});
 	document.getElementById(AnonifyBrowser.Interface.OS_VER_LIST_ID).addEventListener("change", function(){
 		AnonifyBrowser.Interface.onOSVerSelect(this.value);
 	});
-	console.log(document.getElementById(AnonifyBrowser.Interface.TRIGGER_ID).checked);
-	document.getElementById(AnonifyBrowser.Interface.TRIGGER_ID).addEventListener("change", function(){
-		AnonifyBrowser.Interface.toggleState(this.checked);
+	document.getElementById("anonifybrowser-tbt-link").addEventListener("click", function(){
+		chrome.tabs.create({url : "https://facebook.com/portoftbt"});
 	});
 });
