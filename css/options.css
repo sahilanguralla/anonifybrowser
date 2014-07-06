@@ -1,0 +1,57 @@
+html{
+}
+body{
+	background-color: #FCFCFC;
+}
+.container{
+	max-width: 500px;
+	padding: 20px;
+	margin: auto;
+	background: url(../images/cream_pixels.png) repeat;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	border: 1px solid #B3B3B3;
+}
+.shadow{
+	-webkit-box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    0px 0px 25px 0px rgba(50, 50, 50, 0.3);
+	box-shadow:         0px 0px 25px 0px rgba(50, 50, 50, 0.3);
+}
+#head{
+	font-family: 'Ubuntu', sans-serif;
+}
+#osListLabel{
+	margin-bottom: 5px;
+}
+#osList{
+	width: 200px;
+	padding: 9px;
+}
+
+#osList .dropdown.icon{
+	float:right;
+}
+
+.ui.table tbody tr:hover{
+	background-color: #A29A9A;
+	cursor:pointer;
+}
+
+.ui.table{
+	user-select: none; /* CSS3 (little to no support) */
+	-ms-user-select: none; /* IE 10+ */
+	-moz-user-select: none; /* Gecko (Firefox) */
+	-webkit-user-select: none; /* Webkit (Safari, Chrome) */
+}
+
+.ui.table tbody tr.positive.selected td{
+	font-weight: bolder;
+	background-color: #E0E0E0 !important;
+}
+.ui.table tbody tr.positive.selected td:hover{
+	background-color: #A29A9A !important;
+}
+.fade-line{
+	opacity:0.25;
+}
