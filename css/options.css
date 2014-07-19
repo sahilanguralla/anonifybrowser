@@ -55,3 +55,7 @@ body{
 .fade-line{
 	opacity:0.25;
 }
+
+.changed{
+	background-color: #FFFB81 !important;
+}

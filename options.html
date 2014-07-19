@@ -49,42 +49,47 @@
         Add OS
       </div>
       <h3 id="osListLabel">Operating Systems Versions :</h3>
+      <hr class="fade-line" />
       <div id="edit-remove-buttons" class="row">
-        <hr class="fade-line" />
-        <div class="ui vertical animated button">
+        <div id="edit-button" class="ui mini vertical animated button">
           <div class="visible content">Edit</div>
           <div class="hidden content">
             <i class="right edit icon"></i>
           </div>
         </div>
-        <div class="ui red animated button">
+        <div id="delete-button" class="ui mini red animated button">
           <div class="visible content">Delete</div>
           <div class="hidden content">
             <i class="right trash icon"></i>
           </div>
         </div>
-        <div class="ui green vertical animated button">
+        <div id="add-button" class="ui mini green vertical animated button">
           <div class="visible content">Add New</div>
           <div class="hidden content">
             <i class="right add icon"></i>
           </div>
         </div>
-        <hr class="fade-line" />
       </div>
+      <hr class="fade-line" />
       <input type="hidden" id="selected-os-ver-count" />
+      <input type="hidden" id="selected-os-ver-list" />
+      <div id="display-message">
+        <div class="ui icon warning message">
+          <i class="linux icon"></i>
+          <div class="content">
+            <div class="header">
+              No Operating System selected!
+            </div>
+            <p>Please select an operating system...</p>
+          </div>
+        </div>
+      </div>
       <table class="ui table segment">
+
         <tbody id="os-ver-tbody">
-          <tr>
-            <td>John</td>
-          </tr>
-          <tr>
-            <td>Jamie</td>
-          </tr>
-          <tr>
-            <td>Jill</td>
-          </tr>
         </tbody>
-        <tfoot>
+        
+        <tfoot id="os-ver-tfoot">
           <tr><th colspan="3">
             <div class="ui blue labeled icon button"><i class="user icon"></i> Add User Agent String</div>
           </th>
@@ -94,5 +99,39 @@
     <div class="ui tab segment" data-tab="advanced">Second</div>
   </div>
 
+  <!-- Modals -->
+  <div id="ua-edit-modal"  class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Header
+    </div>
+    <div class="content">
+    </div>
+    <div class="actions">
+      <div name="no-button" class="ui button">
+        Nay
+      </div>
+      <div name="yes-button" class="ui button">
+        Sure
+      </div>
+    </div>
+  </div>
+  
+  <div id="ua-delete-modal"  class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Header
+    </div>
+    <div class="content">
+    </div>
+    <div class="actions">
+      <div name="no-button" class="ui button">
+        Nay
+      </div>
+      <div name="yes-button" class="ui button">
+        Sure
+      </div>
+    </div>
+  </div>
 </body>
 </html>
