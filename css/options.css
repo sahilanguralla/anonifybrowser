@@ -59,3 +59,17 @@ body{
 .changed{
 	background-color: #FFFB81 !important;
 }
+.errorInvalid{
+	background-color: #E07667 !important;
+}
+.errorUnique{
+	background-color: #E89083 !important;
+}
+.notify{
+	margin-top:20px;
+}
+
+#os-edit-modal{
+	width: 50%;
+	margin: -25%;
+}
